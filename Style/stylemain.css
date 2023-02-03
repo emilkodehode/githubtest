@@ -64,7 +64,6 @@ Nav bar styling
 .dropdown-menu:hover #dropdown-content{
     opacity: 1;
     visibility: visible;
-    transition: 500ms opacity;
 }
 .nav-el{
     background-color: var(--mint-color);
@@ -228,23 +227,19 @@ Parallax dangerzone
     background-attachment: fixed;
     background-position-x: center;
 }
-.chocolatebox{
-    background-image: url(../Images/ChocolateBox32.svg);
+.chocolatebox, .greenstairs, .purplebox{
     min-height: 128px;
     width: auto;
     z-index: -1;
+}
+.chocolatebox{
+    background-image: url(../Images/ChocolateBox32.svg);
 }
 .greenstairs{
     background-image: url(../Images/GreenStairs32.svg);
-    min-height: 128px;
-    width: auto;
-    z-index: -1;
 }
 .purplebox{
     background-image: url(../Images/PurpleBox32.svg);
-    min-height: 128px;
-    width: auto;
-    z-index: -1;
 }
 /* -    -   -   -   -
 calculator page
@@ -262,6 +257,11 @@ Canvas style and "placement"
 /* -    -   -   -   -
 style for html form
 -   -   -   -   - */
+#agegate, #namegate{
+    visibility: hidden;
+    opacity: 0;
+    transition: all 2000ms;
+}
 #agecheck{
     text-align: center;
     width: 100px;
