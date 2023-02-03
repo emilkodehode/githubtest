@@ -92,7 +92,9 @@ ageEl.addEventListener("change",function testing_age(){
 function div_visibility(visibale, element){
     if(visibale){
         element.style.visibility = "visible"
+        element.style.opacity = 1
     } else{
+        element.style.opacity = 0
         element.style.visibility = "hidden"
     }
 }
