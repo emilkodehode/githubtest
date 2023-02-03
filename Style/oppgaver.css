@@ -1,0 +1,38 @@
+body{
+    margin: auto;
+    width: 50%;
+    text-align: left;
+}
+section{
+    display: flex;
+    flex-direction: column;
+}
+/* dear old internett says this should work. no more arrow on my input field */
+/* Chrome, Safari, Edge, Opera */
+
+#agecheck{
+    text-align: center;
+    width: 100px;
+}
+#username{
+    width: 500px;
+    text-align: center;
+}
+#agegate{
+    border: 5px aquamarine groove;
+}
+#namegate{
+    border: 5px aquamarine groove;
+}
+label, select, input{
+    margin: 5px 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

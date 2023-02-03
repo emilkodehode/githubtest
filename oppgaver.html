@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript oppgaver</title>
+    <script src="JS/oppgaver.js" defer></script>
+    <script src="JS/index.js" defer></script>
+    <link rel="stylesheet" href="Style/stylemain.css">
+</head>
+<body>
+    <header>
+        <h1>Javascript oppgaver</h1>
+    </header>
+    <main>
+        <section>
+        <form id="yourform" action="#">
+        <div>
+            <input id="agecheck" type="number" placeholder="don't lie plz :3" min="0" max="69"><label for="agecheck">Please enter you'r age.</label>
+            <p id="agetext">By entering a "valid" age you agree that you are an adult, and as such is responsible for your own choices. :3</p>
+        </div>
+        <div id="agegate">
+            <p id="nametext">How about we also introduce ourselves to one another?</p>
+            <input id="username" type="text" placeholder="no limits here, go wild ~w~" maxlength="16"><br>
+            <label for="username">Please enter a "name", in the provided field above.</label>
+        </div>
+        <div id="namegate">
+            <div>
+                <label for="occupation">how about occupation? please choose one that closest relates to your current position</label>
+                <select name="occupation" id="occupation">
+                    <option value="occupation" selected disabled>exciting options</option>
+                    <option value="occupation">Developer</option>
+                    <option value="occupation">Athlete</option>
+                    <option value="occupation">Monster</option>
+                    <option value="occupation">Doctor</option>
+                    <option value="occupation">Streamer</option>
+                    <option value="occupation">Artist</option>
+                </select>
+                <p id="occupationtext"></p>
+            </div>
+            <div>
+                <p>important info. life or death. pick your poison</p>
+                <input type="radio" value="Poison" name="drink" id="poison" selected disabled><label for="poison">Poison</label>
+                <input type="radio" value="PepsiCola" name="drink" id="pepsicola"><label for="pepsicola">PepsiCola</label>
+                <input type="radio" value="CocaCola" name="drink" id="cocacola"><label for="cocacola">CocaCola</label>
+                <input type="radio" value="Water" name="drink" id="water"><label for="water">Water</label>
+                <p id="drinktext">im fond of the green mean light machine monster ultra sour candy taste awww yissss</p>
+            </div>
+            <div>
+                <label for="status">Are You Alive?</label>
+                <select name="status" id="status">
+                    <option value="???" selected disabled>???</option>
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+                <p id="statustext">...?</p>
+            </div>
+        </div>
+        </form>
+        </section>
+    </main>
+</body>
+</html>

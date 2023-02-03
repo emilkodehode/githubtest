@@ -2,76 +2,299 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link rel="icon" href="./Images/PixelLime.svg">
-        <link rel="stylesheet" href="./CSS/Style.css">
-        <title>
-            I'm Learning MORE!
-        </title>
+        <link rel="icon" href="Images/PixelLime.svg">
+        <link rel="stylesheet" href="Style/stylemain.css">
+        <script src="JS/index.js" defer></script>
+        <title>I'm Learning MORE!</title>
     </head>
     <body>
         <header>
-            <h1>H1 Important Title, Also welcome to this Lime Time Page</h1>
+            <div id="nav-bar">
+                <div class="nav-el">
+                    <a class="link-el" href="mygoals.html">2023 GOALS</a>
+                </div>
+                <div class="nav-el dropdown-menu">
+                    <span class="dropdown-label link-el">Small Projects</span>
+                    <div id="dropdown-content">
+                    </div>
+                </div>
+                <div class="nav-el">
+                    <a class="link-el" href="index.html">Main Page</a>
+                </div>
+                <div class="nav-el">
+                    <a class="link-el" href="aboutme.html">About Me</a>
+                </div>
+            </div>
         </header>
         <main>
-            <div class="geninfo">
-                <div class="textctrl">
+            <section class="top-section">
+                <div class="main-text">
                     <p>
-                        im nested inside so i can be controlled an extra level by the textctrl class <br>
-                        that is why this text is aligned to the left side. <br>
-                        im on the left <br>
-                        why all the borders just to help myself visualize what im doing better. :3
+                        ~stackoverflow; You need to add overflow: scroll to your CSS for your full page wrapper/container div, then your targeted sticky element should scroll the full length of your web page and not get stuck when you exit your original view port. <br> <br>
+                        
+                        why did i write this here. cause i set by body height to 100vh and my nav bar sticky is loacted in the header so when my sticky header wanted to move with the scroll it only took into account the 100vh i had set in body so whenever i scrolled past my initial window size my sticky header would stop. removing that 100vh form my body made my sticky header do what i wanted. <br>
+                        why i had 100vh in body was from experimenting with margin and heights to push footer at bottom. ended up using flexob for that. having the main section grow and fill the empty space betwen header and footer. <br> <br>
+
+                        while <strong>INDEED I WAS CORRECT AND WRONG</strong> the bug that it initialized itself at a set veiwheight when i used 100vh is correct in doing not what i want but it also as usual does exactly as told. it all fixed itself when i finally decided to try and tell my dear css to have a min-height: 100vh; in body. then it it all worked itself out.
                     </p>
-                </div>
-                <p>
-                    im part of the geninfo class im aligned centered while above me its aligned left. the geninfo class aligned me. careful with aligning items with % aligned a width of 50% on left and right means 50+50 that is a 100% space occupied and will break. so by using auto or % dont go over 50 and sum of all parts sides margin padding width border. they all add up in some way when elements interact with eachother in the <strong><em>GRAND DESIGN</em></strong> of your site
-                </p>
-                <div>
-                    <p>
-                        there was a little video of fancy spinning cube but github said the file was to big. so i should host it on another site or re-render it in a smaller filesize.
-                    </p>
-                </div>
-                <div class="flexcontainer">
-                    <p>
-                        this text is right outside the flexcontroller. if i was inside i would be affected by the flex. cause flex affects its DIRECT children or the first nest. so i can write like underneath me you can find links to other pages. cause i dont know how to make a proper nav bar yet.
-                    </p>
-                    <div class="flexcols">
-                        <div class="flexcol">
-                            <p>My Goals <br>
-                            <a href="MyGoals.html">2023 GOALS</a></p>
-                        </div>
-                        <p>
-                            im inside flex <br>
-                            thats why im like this. <br>
-                            i dont have a class <br>
-                            so im not getting styled :c <br>
-                            im targetting first and last <br>
-                            to give them rounded edges
-                        </p>
-                        <div class="flexcol">
-                            <p>
-                                "Main Page" <br>
-                                <a>Already here</a>
-                            </p>
-                        </div>
-                        <div class="flexcol">
-                            <p>
-                                About me<br>
-                                <a href="AboutMe.html">Click here</a>
-                            </p>
-                        </div>
+                    <div id="h-bar">
+                        <p>text</p><p>word</p><p>funky</p><p>maze</p><p>woowie</p><p>emil</p><p>dragon</p><p>true</p><p>yoshi</p><p>quagmire</p><p>qwerty</p><p>chocolate</p><p>dinner</p><p>sleep</p>
                     </div>
+                    <p>
+                        why all the borders just to help myself visualize what im doing better. :3 <br>
+                        
+                        good practice is wrapping elements into sections. but should i use the section as a container or a div itself as a container. why not use section and give it container class. one this was the point system 1 for el 10 for class 100 for id. <br>
+                        
+                        remember instead of px or % one can use vh or vw (veiw Height/Width). A basic setup would be having a base set width of the site that one would place upon <br>
+                        
+                        elements have collapsing edges so if they overlapp and as most elements have some basic padding or margin of some sort as defualt the overlapping edges will be addative. so if certain empty unwanted spacing behavior occurs check for overlapping.
+                    </p>
+                </div>
+            </section>
+            <div class="parallax-item greenstairs"></div>
+            <section class="middle-section">
+                <p>
+                    i needed to add a z-index to the parallax so my nav bar could render over them. i also noticed i have a pespective thing in css i can alter. this and z index have something to do with eachother. but i guess z index is simply layering of items. the pages starts at 0 and positive will be renderd above and negative behind. i also feel something placed in the body as background and 0 is behind. it depend on that level of encapsulation elements are on. if its on the same level a z-index will allow control over who is renderd atop another. 
+                </p>
                 <div>
                     <button class="hovertest">
                         Touch me :3
                     </button>
                 </div>
+            </section>
+            <div class="parallax-item chocolatebox"></div>
+            <section class="bottom-section">
+                <div>
+                    <p>okay, if i stay consistent on the way i design things i use section and div class containers for for items itself and elements. sounds like a implicit thing to do. and i use only body as a display flax and then have header main footer be affected by it to have a firm controll of how wide i want my main area to be and have my header at top main in middle and footer at bottom</p>
                 </div>
-            </div>
+            </section>
+            <div class="parallax-item purplebox"></div>
+            <section class="filler-section">
+                <div class="sticky-test">
+                    <p>dont mind me i just wanna SCROLL on with you :3</p>
+                </div>
+                <div class="main-text"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore odio facere unde neque laudantium dignissimos corrupti in, fugit illum, quibusdam iure perspiciatis, aliquid consequatur dolor reiciendis debitis ex nemo enim?Doloremque consequuntur nobis autem quidem molestias. Ad quam repellat expedita sequi totam consequuntur, voluptatum animi facere omnis recusandae ullam maiores exercitationem ipsam, placeat minima nemo libero, reiciendis nisi aliquam sint.Facere accusamus ea nam, ipsum cupiditate iste quasi hic illum, rem delectus cumque, quis pariatur error! Maiores ipsa est, velit molestias illo excepturi ex provident, repudiandae tenetur quisquam voluptatum quia!Optio, repellat iusto dolorem, magnam accusamus quisquam similique cum nostrum illum saepe ab mollitia sint sit culpa laborum, voluptatum obcaecati hic dolorum nisi a aliquam ullam placeat tempora velit. Cumque.Cupiditate quis consectetur incidunt atque vitae, eius est odit nemo corporis ullam optio repellat veniam quaerat vero, dicta corrupti repellendus ratione quisquam reprehenderit velit esse doloribus. Delectus unde debitis mollitia!Itaque doloribus commodi at, ad dolorum doloremque corrupti inventore officia repellat obcaecati expedita. Saepe vel assumenda nostrum, debitis, eveniet suscipit modi, voluptatibus a cupiditate eos aspernatur laborum ipsum odio eum?Natus, mollitia. Quo inventore dicta pariatur omnis iure nam, mollitia sequi, enim, aspernatur praesentium ab dignissimos assumenda perferendis! Sunt laudantium facilis dicta neque sequi perferendis tempore veniam officia laboriosam nulla!Quos, ullam iure. Labore dignissimos rem soluta deleniti nostrum repudiandae, architecto maiores cupiditate excepturi consectetur amet laboriosam assumenda earum, rerum consequatur blanditiis reprehenderit ad quibusdam odit placeat. Facere, sed iste?</span><span>Molestias aspernatur laudantium officia voluptates blanditiis quo dolor libero ipsum praesentium soluta impedit alias optio quasi, atque distinctio natus, cum dolorum? Nostrum inventore natus in debitis. Excepturi vero voluptates molestiae.</span><span>Voluptatibus, iure! Minus amet mollitia maiores, cum nostrum quia alias rem suscipit obcaecati! Sunt blanditiis mollitia amet assumenda quaerat maiores accusantium. Perferendis alias minima blanditiis facilis debitis in illum minus!</span></p>
+                <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque rem quas neque fugiat animi ab expedita magnam ad aliquid, quasi quidem corporis officiis inventore esse, obcaecati vel exercitationem officia sit.</span><span>Vel adipisci quaerat eveniet facilis, error, necessitatibus dolore modi alias ducimus debitis esse aperiam voluptate fugiat nesciunt minus cumque, sed laboriosam? Deserunt neque expedita enim, aliquid possimus temporibus asperiores? Odio.</span><span>Maiores non aspernatur animi corporis nihil veritatis tenetur. Autem consequatur commodi quia vitae amet illum corrupti harum omnis. Nihil eos velit accusamus rem, laboriosam reprehenderit tenetur officiis odit repudiandae suscipit.</span><span>Mollitia pariatur consequatur porro iusto recusandae commodi voluptate! Maiores exercitationem, ut debitis ratione, placeat possimus ab delectus, ex nam consectetur minima? Praesentium repellendus nisi recusandae perferendis voluptates inventore eligendi maiores.</span><span>Aspernatur similique magni eos quod cupiditate, dolores id iusto nobis cumque fugit mollitia illum quia enim rerum exercitationem. Molestiae laudantium temporibus, reiciendis quod obcaecati enim dolorem exercitationem blanditiis dicta a?</span><span>Eligendi voluptas nemo quia in et blanditiis quis, repellat neque delectus animi incidunt quisquam eos debitis culpa expedita, dicta perspiciatis. Nisi sint expedita quibusdam a fugiat reprehenderit soluta officiis nesciunt?</span><span>Sed ab, dignissimos corrupti excepturi provident distinctio aperiam deserunt earum asperiores nam impedit commodi. Nisi iure atque cum laboriosam ipsum ab voluptatum, possimus fugiat eaque incidunt eligendi impedit? Consequatur, dicta.</span><span>Voluptatibus in excepturi ut quos cumque. Dolorum laborum odio recusandae rerum, tenetur eligendi unde quidem! Nam, consequatur, provident cum veritatis et accusamus accusantium dicta, similique labore unde fuga iure molestiae.</span><span>Iste placeat dolores ipsam illo! Corrupti officia esse nulla reprehenderit vero optio beatae, adipisci maxime recusandae in fugit ut illum non nisi cumque unde debitis similique ex. Beatae, numquam similique.</span><span>Atque, neque repellendus eum quasi quia cupiditate labore inventore similique eos fugit quas totam. Laudantium deserunt qui quae mollitia! Ratione deleniti animi dignissimos officia dicta eaque incidunt aspernatur debitis magni.</span></p>
+                <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, illum consequatur molestias quo possimus dignissimos sit sunt recusandae saepe iste sequi! Labore corrupti quas unde nesciunt excepturi, autem quibusdam suscipit!</span><span>Dolore nisi in fugiat nobis debitis soluta sequi facilis iste quos. Placeat rerum possimus exercitationem quas nemo omnis, esse expedita voluptate architecto non? Ipsam nesciunt illum, adipisci error animi sit?</span><span>Earum sint autem quas dolorum repudiandae sequi consequuntur esse alias officiis ut molestias, consectetur atque exercitationem illum, quasi, ipsum temporibus odit ullam eum nisi. Dignissimos enim cum animi eum atque?</span><span>Commodi maiores fugiat tempore totam, maxime ipsum, laborum quisquam voluptatem quam dignissimos labore quasi ut mollitia, culpa corrupti laudantium ex pariatur. Aperiam quos beatae cupiditate ab! Aliquid facere eligendi reiciendis?</span><span>Vero tempore cum veritatis dolore consectetur, ea iure, quia modi nobis tenetur excepturi debitis atque rerum totam minima velit, voluptate ad nostrum ab non necessitatibus! Similique itaque ex quasi excepturi!</span><span>Sunt, hic. Molestiae, doloribus deserunt delectus blanditiis aliquid quia soluta consequatur similique dolor temporibus saepe odit molestias illo ab enim nisi nam quisquam. Sint asperiores earum deleniti similique quam autem.</span><span>Iste totam debitis natus distinctio consectetur in magnam adipisci reiciendis a obcaecati dignissimos ipsa similique facilis nesciunt non repellendus expedita possimus ducimus odio neque, aperiam rerum. Minima quisquam aliquid ea.</span><span>Nam, quis. Sequi tenetur voluptatibus libero consequuntur, natus reprehenderit, cum, corporis obcaecati nisi neque incidunt totam? Molestiae, eaque! Distinctio quasi assumenda, iste consequuntur sint maiores aperiam quia placeat dolor recusandae!</span><span>Quae vero pariatur animi, consequatur quidem eum fugit nemo debitis sequi voluptatibus placeat impedit tempore accusamus omnis, distinctio similique optio? Ea molestias excepturi id, impedit eius quam nam quibusdam sapiente?</span><span>Similique perspiciatis maxime adipisci, non voluptatum neque doloremque repellendus tempore. Doloribus, commodi! Aliquam reprehenderit nulla tempora libero, deserunt consequuntur maxime architecto, optio praesentium voluptate, quam dolores accusantium unde animi quae?</span></p></div>
+                <pre>
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    11
+
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    11
+
+                    11
+                    1
+                    1
+
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+
+                </pre>
+                <pre>
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    11
+
+                    1
+                    1
+                    1
+                    1
+                    cant be bothered with lorem ipsum all the time mindlessly pressing 1 and enter to pass some time
+                    also this text
+                    will find itself outside the margin cause the pre tag does exactly as told and just keeps on going
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    11
+
+                    11
+                    1
+                    1
+
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    
+                </pre>
+                <pre>
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    11
+
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    11
+
+                    11
+                    1
+                    1
+
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    
+                </pre>
+                <pre>
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    11
+
+                    1
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    11
+
+                    11
+                    1
+                    1
+
+                    1
+                    1
+                    1
+
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+                    1
+
+                    
+                </pre>
+            </section>
         </main>
         <footer>
-            <p>
-                woowie im fancy down here in the footer. maybe ille have some information on the author and copyright or disclaimers and stuff.
-            </p>
+            <div class="footer-el">
+                <p>
+                    woowie im fancy down here in the footer. maybe ille have some information on the author and copyright or disclaimers and stuff.
+                </p>
+            </div>
         </footer>
     </body>
 </html>
