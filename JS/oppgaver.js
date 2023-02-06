@@ -97,6 +97,8 @@ function div_visibility(visibale, element){
         element.style.opacity = 0
         element.style.visibility = "hidden"
     }
+    //order of operation is important. the animation plays wroong if order is not considerd.
+    //by initialising a defualt style in css and prepping it by transition and setting a timer i can animate just about anything i belive.
 }
 
 nameEl.addEventListener("change", function(){
@@ -105,7 +107,7 @@ nameEl.addEventListener("change", function(){
         nameText = `Hello ${userName}, my name is ${my_name(userName)}`
     }
     else {
-        console.log("write a name")
+        console.log("write a name, just anything goes. also i lied limit is 16.")
     }
     updateNameText(nameText)
     div_visibility(userName, nameGateEl)
@@ -137,6 +139,8 @@ for (let i = 0; i < getDrink().length; i++) {
 
 function my_name(userName){
     let myName = userName.split("")
+    //im taking the users name splits it into an array and reversing the order and joining it to make my own name.
+    //i should make verything lowercase and capitalize the first letter it at the end. why lowercase everything first? what if user put more than one big letter.
     myName = myName.reverse()
     //i could just concatinate this but i want more overview of what the process is for myself so this is easier for me for now to keep track of
     myName = myName.join("")
