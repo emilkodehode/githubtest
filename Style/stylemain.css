@@ -41,7 +41,7 @@ Nav bar styling
     flex-direction: row;
     justify-content: space-evenly;
     margin: 20px;
-    z-index: 5;
+    z-index: 100;
 }
 .dropdown-menu{position: relative;}
 .dropdown-label{color: var(--mintdark-color);}
@@ -52,7 +52,7 @@ Nav bar styling
     border-top: none;
     visibility: hidden;
     position: absolute;
-    z-index: 5;
+    z-index: 100;
     border: var(--mintdarkest-color) 15px groove;
     background-color: var(--mint-color);
     border-top: none;
@@ -64,7 +64,8 @@ Nav bar styling
 .dropdown-menu:hover #dropdown-content{
     opacity: 1;
     visibility: visible;
-    z-index: 5;
+    position: absolute;
+    z-index: 100;
 }
 .nav-el{
     background-color: var(--mint-color);
@@ -159,6 +160,8 @@ section{
     padding: 10px;
     background-color: var(--mintdark-color);
     border: var(--mintborder-border);
+    position: relative;
+    z-index: -1;
 }
 .main-text{
     /* testing ground for text align */

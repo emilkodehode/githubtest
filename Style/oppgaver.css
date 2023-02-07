@@ -18,12 +18,6 @@ section{
     width: 500px;
     text-align: center;
 }
-#agegate{
-    border: 5px aquamarine groove;
-}
-#namegate{
-    border: 5px aquamarine groove;
-}
 label, select, input{
     margin: 5px 0;
 }
