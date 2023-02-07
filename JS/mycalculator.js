@@ -32,8 +32,8 @@ function mathOperation(){
 }
 }
 
-num1El.addEventListener("change", mathOperation)
-num2El.addEventListener("change", mathOperation)
+num1El.addEventListener("keyup", mathOperation)
+num2El.addEventListener("keyup", mathOperation)
 operatorEl.addEventListener("change", mathOperation)
 addEl.addEventListener("click", function(){answer(getnum1() + getnum2());})
 subtractEl.addEventListener("click", function(){answer(getnum1() - getnum2())})
