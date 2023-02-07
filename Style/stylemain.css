@@ -18,6 +18,8 @@ body{
     display: flex;
     flex-flow: column;
     min-height: 100vh;
+    position: relative;
+    z-index: 0;
 }
 header{
     position: sticky;
@@ -41,6 +43,7 @@ Nav bar styling
     flex-direction: row;
     justify-content: space-evenly;
     margin: 20px;
+    position: relative;
     z-index: 100;
 }
 .dropdown-menu{position: relative;}
@@ -160,8 +163,6 @@ section{
     padding: 10px;
     background-color: var(--mintdark-color);
     border: var(--mintborder-border);
-    position: relative;
-    z-index: -1;
 }
 .main-text{
     /* testing ground for text align */
