@@ -66,3 +66,13 @@ function adding(num1,num2,allowed){
 sum = num1 + allowed +num2
 console.log(sum)
 }
+
+function oddeven(number){
+    if (!(number % 2)){
+        answer = "even"
+    }else{
+        answer = "odd"
+    }
+    return answer
+}
+console.log(oddeven(2130))

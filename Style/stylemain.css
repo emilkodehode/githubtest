@@ -18,16 +18,17 @@ body{
     display: flex;
     flex-flow: column;
     min-height: 100vh;
-    position: relative;
-    z-index: 0;
 }
 header{
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 main{
     flex: 1;
     margin: auto;
+    position: relative;
+    z-index: 0;
 }
 footer{
     border-top: dotted 5px var(--mintdarkest-color);
@@ -44,7 +45,6 @@ Nav bar styling
     justify-content: space-evenly;
     margin: 20px;
     position: relative;
-    z-index: 100;
 }
 .dropdown-menu{position: relative;}
 .dropdown-label{color: var(--mintdark-color);}
@@ -55,7 +55,6 @@ Nav bar styling
     border-top: none;
     visibility: hidden;
     position: absolute;
-    z-index: 100;
     border: var(--mintdarkest-color) 15px groove;
     background-color: var(--mint-color);
     border-top: none;
@@ -63,12 +62,11 @@ Nav bar styling
     transition: 750ms all;
     display: flex;
     flex-direction: column;
+    transform: translateZ(1);
 }
 .dropdown-menu:hover #dropdown-content{
     opacity: 1;
     visibility: visible;
-    position: absolute;
-    z-index: 100;
 }
 .nav-el{
     background-color: var(--mint-color);
@@ -147,6 +145,9 @@ my css variables
 /* -    -   -   -   -
 my sitewide classes
 -   -   -   -   - */
+/* canvas{
+    position: relative;
+}*/
 .sticky-test{
     position: sticky;
     top: 0;
@@ -235,7 +236,6 @@ Parallax dangerzone
 .chocolatebox, .greenstairs, .purplebox{
     min-height: 128px;
     width: auto;
-    z-index: -1;
 }
 .chocolatebox{
     background-image: url(../Images/ChocolateBox32.svg);

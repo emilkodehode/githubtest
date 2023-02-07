@@ -5,6 +5,7 @@
     background-color: blueviolet;
     animation: infinite 4s bounce;
     margin: auto;
+    transform: translateZ(0);
 }
 @keyframes bounce {
     0%{transform: scale(1);}
