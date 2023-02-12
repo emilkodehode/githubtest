@@ -50,15 +50,21 @@
                 </div>
                 <p>SUM: <span id="sum-el"></span></p>
             </div>
-            <div>
-                <p>modulo: <span id="modulo"></span></p>
-            </div>
+        </section>
+        <section>
+            <p>Enter a positive whole number. This will run the Collatz function on all numbers from 1 to the number given. The output will be the starting number taking the most steps to reach 1. And the number within the range wich reached the highest value before 1.</p>
+            <input type="number" name="collatz-input" id="collatz-input">
+            <p id="collatz-text"></p>
+            <p>This show the journey of the one with most steps</p>
+            <canvas id="collatz-steps" width="500" height="500" style="border: 5px black solid; background-color: black;"></canvas>
+            <p>This show the journey of the one that reached the highest</p>
+            <canvas id="collatz-highest" width="500" height="500" style="border: 5px black solid; background-color: black;"></canvas>
         </section>
     </main>
     <footer>
         <div class="footer-el">
             <p>
-                woowie im fancy down here in the footer. maybe ille have some information on the author and copyright or disclaimers and stuff.
+                when i tested to see of my Collatz function was correct i see that some people count the initial starting number as a step and i wholeheartadly disagree. the steps 4 uses i would say is 2. cause you have not done the Collatz function on the integer until after it is changed value so it counts steps only after the value has changed has the first step been taken.
             </p>
         </div>
     </footer>

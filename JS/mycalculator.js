@@ -1,8 +1,20 @@
+//these gets the user input
 const getnum1 = () => +document.getElementById("num1-el").value;
+//these are badly named. numX-el should be numX-input, i should clarify the element when i can.
 const getnum2 = () => +document.getElementById("num2-el").value;
 const getOperator = () => document.querySelector(`#operator`).value
-const answer = (text) => document.getElementById("sum-el").textContent = text;
+const getCollatzNum = () => +document.getElementById("collatz-input").value;
 
+
+//these cahnges the contents of an element
+const answer = (text) => document.getElementById("sum-el").textContent = text;
+const collatzResult = (text) => document.getElementById("collatz-text").innerHTML = text;
+
+/** @type {HTMLCanvasElement} */
+const collatzStepsCanvas = document.getElementById("collatz-steps");
+const collatzHighestCanvas = document.getElementById("collatz-highest");
+//these would be reference to the elements for event listnesr and such
+const getCollatzEl = document.getElementById("collatz-input");
 const num1El = document.getElementById("num1-el")
 const num2El = document.getElementById("num2-el")
 const addEl = document.getElementById("add-el")
@@ -118,53 +130,52 @@ class collatzElement{
     constructor(){
         this.startingNum
         this.stepsTaken = 0
-        this.highestNumber
-        this.currentNumber
+        this.highestNum
+        this.currentNum
     }
 }
 
 let arrayCollatzElements = []
-function initCollatzElements(number){
-    for (let i = 1; i <= number; i++) {
+function initCollatzElements(num){
+    for (let i = 1; i <= num; i++) {
         arrayCollatzElements.push(new collatzElement)
         arrayCollatzElements[i-1].startingNum = i
-        arrayCollatzElements[i-1].currentNumber = i
-        arrayCollatzElements[i-1].highestNumber = i
+        arrayCollatzElements[i-1].currentNum = i
+        arrayCollatzElements[i-1].highestNum = i
     }
     theCollatzConjecture(arrayCollatzElements)
 }
 
 function theCollatzConjecture(arrayCollatzElements){
-    mostStepsNum = arrayCollatzElements[0].stepsTaken
+    mostStepsObj = arrayCollatzElements[0]
     mostStepsStartingNum = arrayCollatzElements[0].startingNum
-    bigInt = arrayCollatzElements[0].highestNumber
+    bigNumObj = arrayCollatzElements[0]
     bigIntStartingNum = arrayCollatzElements[0].startingNum
     for (let i = 0; i < arrayCollatzElements.length; i++) {
-        while (arrayCollatzElements[i].currentNumber > 1){
-            arrayCollatzElements[i].currentNumber = checkOddEven(arrayCollatzElements[i].currentNumber)
+        while (arrayCollatzElements[i].currentNum > 1){
+            arrayCollatzElements[i].currentNum = checkOddEven(arrayCollatzElements[i].currentNum)
             arrayCollatzElements[i].stepsTaken++
-            if(arrayCollatzElements[i].currentNumber > arrayCollatzElements[i].highestNumber){
-                arrayCollatzElements[i].highestNumber = arrayCollatzElements[i].currentNumber
+            if(arrayCollatzElements[i].currentNum > arrayCollatzElements[i].highestNum){
+                arrayCollatzElements[i].highestNum = arrayCollatzElements[i].currentNum
             }
         }
     }
     for (let i = 0; i < arrayCollatzElements.length; i++) {
-        if (arrayCollatzElements[i].stepsTaken > mostSteps){
-            mostSteps = arrayCollatzElements[i].stepsTaken
-            mostStepsStartingNum = arrayCollatzElements[i].startingNum
+        if (arrayCollatzElements[i].stepsTaken > mostStepsObj.stepsTaken){
+            mostStepsObj = arrayCollatzElements[i]
         }
-        if (arrayCollatzElements[i].highestNumber > bigNumber){
-            bigNumber = arrayCollatzElements[i].highestNumber
-            bigIntStartingNum = arrayCollatzElements[i].startingNum
+        if (arrayCollatzElements[i].highestNum > bigNumObj.highestNum){
+            bigNumObj = arrayCollatzElements[i]
         }
     }
-    result = 
-    `Running the Collatz procedure on all numbers from 1 to (${arrayCollatzElements.lenght}):”
-    
-    “The integer with most steps was (number), with (number of steps) total steps”
-    
-    “The integer with the highest peak was (number), with a peak of (highest peak value)`
-    return result
+    result =
+    `Running the Collatz procedure on all numbers from 1 to ${arrayCollatzElements.length}. <br>
+    The integer with most steps was ${mostStepsObj.startingNum}, with ${mostStepsObj.stepsTaken} total steps. <br>
+    The integer with the highest peak was ${bigNumObj.startingNum}, with a peak of ${bigNumObj.highestNum}`
+    collatzResult(result)
+    collatzvisualized(mostStepsObj, collatzStepsCanvas)
+    collatzvisualized(bigNumObj, collatzHighestCanvas)
+    arrayCollatzElements.length = 0
 }
 function checkOddEven(num){
     if (num >= 1){
@@ -177,5 +188,29 @@ function checkOddEven(num){
     }
     return num
 }
-console.log(initCollatzElements(20))
-console.log(arrayCollatzElements)
+getCollatzEl.addEventListener("change", function(){
+    initCollatzElements(getCollatzNum())
+})
+
+//i generate the data i need. the canvas height should be the highest numbered gotten plus and lenght should be steps taken pluss a little padding
+
+function collatzvisualized(obj, canvas){
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0, canvas.width, canvas.height)
+    //sets origin bottom left
+    ctx.translate(0,canvas.height)
+    obj.currentNum = obj.startingNum
+    ctx.scale(canvas.width / obj.stepsTaken,(canvas.height / obj.highestNum)*-1)
+    ctx.lineWidth = obj.stepsTaken/obj.highestNum
+    ctx.beginPath()
+    for (let x = 0; x < obj.stepsTaken; x++) {
+        ctx.moveTo(x, obj.currentNum)
+        obj.currentNum = checkOddEven(obj.currentNum)
+        ctx.lineTo(x + 1, obj.currentNum)
+        ctx.strokeStyle = "#ff55ff"
+        ctx.stroke()
+        //need to remember to beign and close path when dealing with lines otherwise it is all 1 big line and it never closes so it never finishes "drawing" and this kills the computer (cannot draw over something that is never done drawn)
+    }
+    ctx.setTransform(1,0,0,1,0,0)
+    ctx.closePath()
+}

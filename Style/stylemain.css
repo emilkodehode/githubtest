@@ -278,6 +278,11 @@ style for html form
 label, select, input{
     margin: 5px 0;
 }
+input{
+    text-align: center;
+}
+/* this removes the styling on the input fields.
+removes the gizmo thing on the right side */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
