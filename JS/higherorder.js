@@ -86,7 +86,7 @@ console.log(filteredPeople);
 //Filter out the objects who are male and have a name of exactly 6 characters
 
 
-const filteredPeople2 = people.filter(people => people.male === true && people.name.length === 6);
+const filteredPeople2 = people.filter(peopl => peopl.male === true && peopl.name.length === 6);
 
 
 console.log(filteredPeople2);
@@ -245,27 +245,38 @@ function removeDuplicate(data){
     noDuplicate = []
     data.forEach((element) => {
         if (!noDuplicate.includes(element)){
-            fixed.push(element)
+            noDuplicate.push(element)
         }
     });
     return noDuplicate
 }
 console.log(removeDuplicate(filterdHobbies))
 
+function randomHobby(hobbiesArray, hobbyAmount){
+  let rndHobbyArray = []
+  while(rndHobbyArray.length < hobbyAmount){
+    rndHobby = hobbiesArray[Math.floor(Math.random() * hobbiesArray.length)]
+    if(!rndHobbyArray.includes(rndHobby)){
+      rndHobbyArray.push(rndHobby)
+    }
+  }
+  return rndHobbyArray
+}
+
 // example:
 
-function realHumans(names, hobbies){
+function realHumans(names, array){
     let people = []
     for (let name of names){
         let person = {}
         person["name"] = name
-        person["age"] = Math.floor(Math.random() * 50 + 18)
-        person["hobbies"] = []
+        person["age"] = Math.floor(Math.random() * 32 + 18)
+        person["hobbies"] =  randomHobby(array, 3)
         people.push(person)
     }
     return people
 }
-console.log(realHumans(names))
+console.log(realHumans(names, filterdHobbies))
 // {
 //     name: "Scott"
 //     age: 31
@@ -279,3 +290,18 @@ console.log(realHumans(names))
 
 // Good luck!
 //----------------------------------------------------------------  
+
+function rowSumOddNumbers(n) {
+	return Math.pow(n,3)
+}
+
+console.log(rowSumOddNumbers(6))
+console.log(rowSumOddNumbers(9))
+console.log(rowSumOddNumbers(3))
+
+function descendingOrder(n){
+  return n.toString().split("").sort(function(a,b){return b - a}).join("")
+}
+
+console.log(descendingOrder(347384))
+console.log(descendingOrder(123456789))

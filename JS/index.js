@@ -3,7 +3,7 @@
 // first get nav el
 const navDropDownContent = document.getElementById("dropdown-content");
 // make object i need name the pages and titel and if i place it in the dropdown list or make it a stand alone
-const dropdowncontent = ["bouncingballs","fancylines","mycalculator","zaxis", "oppgaver","animations","higherorder"];
+const dropdowncontent = ["bouncingballs","fancylines","mycalculator","zaxis", "oppgaver","animations","higherorder","games"];
 const cssLink = "link-el";
 
 // there done absolutely perfect JK this is trash.
