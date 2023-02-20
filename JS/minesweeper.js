@@ -8,76 +8,149 @@ const ctx = canvas.getContext("2d");
 then that based on their position this cell checks its neighbours and counts how many mines are their neighbours and repsrent it by a number
 the cell start of drawn as a blank sqare and if this cells position is clicked the function ro reveal itself is called done*/
 
-let cellsArray = []
-let row = 10
-let collumn = 10
-let desiredMines = 25
+const getSize = () => +document.querySelector("#size").value
+const getMines = () => +document.querySelector("#mines").value
 
+let cellsArray = []
+let cellToClear = 0
+
+function generateGame(){
+    cellsArray = []
+    cellToClear = (getSize() * getSize()) - getMines()
+    let size = getSize()
+    initCells(size)
+}
 
 class cell{
     constructor(){
         this.x
         this.y
         this.isMine =  false
+        this.isRevealed = false
         this.amountNeighbours = 0
-        this.height = canvas.height / collumn
-        this.width = canvas.width / row
+        this.height = canvas.height / getSize()
+        this.width = canvas.width / getSize()
         this.cellColor = "#8BBCCC"
     }
-    tellNeighbours(theCellsArray){
-        let amIBomb = this.isMine
-        if(!amIBomb){
-            for (let cell of theCellsArray) {
-                if(cell.isMine === true){
-                    switch(cell.isMine === true){
-                        case (this.x === cell.x + 1 && this.y === cell.y):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x - 1 && this.y === cell.y):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x && this.y === cell.y + 1):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x && this.y === cell.y - 1):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x - 1 && this.y === cell.y - 1):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x + 1 && this.y === cell.y - 1):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x - 1 && this.y === cell.y + 1):
-                        this.amountNeighbours++
-                        break
-                    case (this.x === cell.x + 1 && this.y === cell.y + 1):
-                        this.amountNeighbours++
-                        break
-                    }
-            }
+}
+
+function tellNeighbours(cellClicked){
+    if(!cellClicked.isMine){
+        for (let cell of cellsArray) {
+            if(cell.isMine === true){
+                switch(cell.isMine === true){
+                    case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y + 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y - 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y - 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y + 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y + 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y - 1):
+                    cellClicked.amountNeighbours++
+                    break
+                }
             }
         }
     }
-    cellRender(){
-        //this x,y minus this size / 2 widht height this size
-        ctx.beginPath()
-        ctx.rect(this.x * this.width, this.y * this.height, this.width, this.height);
-        ctx.fillStyle = this.cellColor
-        ctx.fill();
-        ctx.font = "30px Arial";
-        ctx.textAlign = "center"
-        ctx.fillStyle = "#5C2E7E";
-        ctx.fillText(this.amountNeighbours, this.x * this.width + this.width/2, this.y * this.height + this.height/2)
-        ctx.closePath()
-    }
-    //cell size is equal to canvas height width / amount - pixelpadding
 }
 
+function victoryChecker(){
+    cellToClear--
+    console.log(cellToClear)
+    if(cellToClear === 0){
+        window.alert("you won")
+    }
+}
+console.log(cellToClear)
 
-function initCells(){
-    for (let x = 0; x < row; x++) {
-        for (let y = 0; y < collumn; y++) {
+function cellRevealer(cellClicked){
+    cellReveal(cellClicked)
+    if(cellClicked.isMine){
+        window.alert("you clicked a mine")
+    }
+    else if(!cellClicked.isMine && cellClicked.amountNeighbours === 0){
+        for (let cell of cellsArray) {
+            if(!cell.isMine && !cell.isRevealed && cell.amountNeighbours === 0){
+                switch(true){
+                    case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y):
+                    cellRevealer(cell)
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y):
+                    cellRevealer(cell)
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y + 1):
+                    cellRevealer(cell)
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y - 1):
+                    cellRevealer(cell)
+                    break
+                }
+            }
+            else if(!cell.isMine && !cell.isRevealed){
+                switch(true){
+                    case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y):
+                    cellReveal(cell)
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y):
+                    cellReveal(cell)
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y + 1):
+                    cellReveal(cell)
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y - 1):
+                    cellReveal(cell)
+                    break
+                }
+            }
+        }
+    }
+}
+
+function cellRender(cell){
+    //this x,y minus this size / 2 widht height this size
+    ctx.beginPath()
+    ctx.rect(cell.x * cell.width, cell.y * cell.height, cell.width, cell.height);
+    ctx.fillStyle = "purple"
+    ctx.fill();
+    ctx.closePath()
+}
+
+function cellReveal(cell){
+    cell.isRevealed = true
+    //this x,y minus this size / 2 widht height this size
+    ctx.beginPath()
+    ctx.rect(cell.x * cell.width, cell.y * cell.height, cell.width, cell.height);
+    ctx.fillStyle = cell.cellColor
+    ctx.fill();
+    let fontSize = 500 / getSize()
+    ctx.font = `${fontSize}px Arial`;
+    ctx.fillStyle = "#5C2E7E";
+    ctx.fillText(cell.amountNeighbours, cell.x * cell.width + cell.width/2.5, cell.y * cell.height + cell.height/1.5)
+    ctx.textAlign = "center"
+    ctx.closePath()
+
+    victoryChecker()
+}
+//cell size is equal to canvas height width / amount - pixelpadding
+
+function initCells(size){
+    for (let x = 0; x < size; x++) {
+        for (let y = 0; y < size; y++) {
             let gameCell = new cell
             gameCell.x = x
             gameCell.y = y
@@ -86,13 +159,14 @@ function initCells(){
     }
     initMines(cellsArray)
     for (let i = 0; i < cellsArray.length; i++) {
-        cellsArray[i].tellNeighbours(cellsArray)
-        cellsArray[i].cellRender()
+        cellRender(cellsArray[i])
+        tellNeighbours(cellsArray[i])
     }
 }
 
 function initMines(cellsArray){
     let amountMines = 0
+    let desiredMines = getMines()
     while (amountMines < desiredMines){
         let rnd = Math.floor(Math.random() * cellsArray.length)
         if(cellsArray[rnd].isMine === false){
@@ -109,18 +183,27 @@ function initMines(cellsArray){
     }
 }
 
-initCells()
 console.log(cellsArray)
 function handleUserClick(clickx,clicky){
-    
+    for (let i = 0; i < cellsArray.length; i++) {
+        cellClicked(clickx,clicky, cellsArray[i])
+    }
+}
+
+function cellClicked(clickx,clicky, cell){
+    let cellxstart = cell.x * cell.width + cell.width
+    let cellxend = cell.x * cell.width
+    let cellystart = cell.y * cell.height + cell.height
+    let cellyend = cell.y * cell.height
+    if((clickx <= cellxstart && clickx >= cellxend) && (clicky <= cellystart && clicky >= cellyend)){
+        console.log(`mx ${clickx} my ${clicky} cxs ${cellxstart} cxe ${cellxend} cys ${cellystart} cye ${cellyend}`)
+        cellRevealer(cell)
+    }
 }
 
 canvasEl.addEventListener("click", function(event){
-    let clickx = event.offsetX - canvas.width/2
-    let clicky = event.offsetY - canvas.height/2
+    let clickx = (event.offsetX - canvas.width) + canvas.width
+    let clicky = (event.offsetY - canvas.height) + canvas.height
+    handleUserClick(clickx,clicky)
+    console.log(`event clickX ${clickx} clickY ${clicky}`)
 })
-
-
-function update(){
-    requestAnimationFrame(update);
-}
