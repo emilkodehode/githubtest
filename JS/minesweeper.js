@@ -22,7 +22,7 @@ class cell{
         this.amountNeighbours = 0
         this.height = canvas.height / collumn
         this.width = canvas.width / row
-        this.cellColor = "green"
+        this.cellColor = "#8BBCCC"
     }
     tellNeighbours(theCellsArray){
         let amIBomb = this.isMine
@@ -59,40 +59,6 @@ class cell{
             }
         }
     }
-    // tellNeighbours(theCellsArray){
-    //     let amIBomb = this.isMine
-    //     for (let i = 0; i < theCellsArray.length; i++){
-    //         let px = theCellsArray[i].x
-    //         let py = theCellsArray[i].y
-    //         let hasMine = theCellsArray[i].isMine
-    //         switch(!(amIBomb)){
-    //             case (this.x === px + 1 && this.y === py && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px - 1 && this.y === py && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px && this.y === py + 1 && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px && this.y === py - 1 && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px - 1 && this.y === py - 1 && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px + 1 && this.y === py - 1 && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px - 1 && this.y === py + 1 && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //             case (this.x === px + 1 && this.y === py + 1 && hasMine):
-    //                 this.amountNeighbours++
-    //                 break
-    //         }
-    //     }
-    // }
     cellRender(){
         //this x,y minus this size / 2 widht height this size
         ctx.beginPath()
@@ -101,7 +67,7 @@ class cell{
         ctx.fill();
         ctx.font = "30px Arial";
         ctx.textAlign = "center"
-        ctx.fillStyle = "red";
+        ctx.fillStyle = "#5C2E7E";
         ctx.fillText(this.amountNeighbours, this.x * this.width + this.width/2, this.y * this.height + this.height/2)
         ctx.closePath()
     }
@@ -133,7 +99,7 @@ function initMines(cellsArray){
             let roll = Math.floor(Math.random() * 4)
             if (roll > 1){
                 cellsArray[rnd].isMine = true
-                cellsArray[rnd].cellColor = "blue"
+                cellsArray[rnd].cellColor = "#333"
                 amountMines++
                 if(amountMines === desiredMines){
                     return
