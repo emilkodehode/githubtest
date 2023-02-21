@@ -78,6 +78,50 @@ function victoryChecker(){
 }
 console.log(cellToClear)
 
+function tellNeighbours(cellClicked){
+    if(!cellClicked.isMine){
+        for (let cell of cellsArray) {
+            if(cell.isMine === true){
+                switch(cell.isMine === true){
+                    case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y + 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x && cellClicked.y === cell.y - 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y - 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y + 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y + 1):
+                    cellClicked.amountNeighbours++
+                    break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y - 1):
+                    cellClicked.amountNeighbours++
+                    break
+                }
+            }
+        }
+    }
+}
+
+function victoryChecker(){
+    cellToClear--
+    console.log(cellToClear)
+    if(cellToClear === 0){
+        window.alert("you won")
+    }
+}
+console.log(cellToClear)
+
 function cellRevealer(cellClicked){
     cellReveal(cellClicked)
     if(cellClicked.isMine){
@@ -99,6 +143,18 @@ function cellRevealer(cellClicked){
                 case (cellClicked.x === cell.x && cellClicked.y === cell.y - 1):
                     cellRevealer(cell)
                     break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y - 1):
+                    cellRevealer(cell)
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y + 1):
+                    cellRevealer(cell)
+                    break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y + 1):
+                    cellRevealer(cell)
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y - 1):
+                    cellRevealer(cell)
+                    break
                 }
             }
             else if(!cell.isMine && !cell.isRevealed){
@@ -113,6 +169,18 @@ function cellRevealer(cellClicked){
                     cellReveal(cell)
                     break
                 case (cellClicked.x === cell.x && cellClicked.y === cell.y - 1):
+                    cellReveal(cell)
+                break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y - 1):
+                    cellReveal(cell)
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y + 1):
+                    cellReveal(cell)
+                    break
+                case (cellClicked.x === cell.x + 1 && cellClicked.y === cell.y + 1):
+                    cellReveal(cell)
+                    break
+                case (cellClicked.x === cell.x - 1 && cellClicked.y === cell.y - 1):
                     cellReveal(cell)
                     break
                 }
