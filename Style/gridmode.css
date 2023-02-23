@@ -1,0 +1,22 @@
+#gridcontainer{
+    border: groove 5px rgb(151,230,179);
+    display: grid;
+    grid-template-areas: auto auto;
+}
+.gridcell{
+    width: 200px;
+    height: 200px;
+}
+.rocking{
+    transform: scale(1);
+    animation: infinite 4s cradle;
+    transform: translateZ(0);
+}
+@keyframes cradle {
+    0%{transform: scale(1.2);}
+    0%{transform: rotate(0deg);}
+    25%{transform: rotate(-10deg);}
+    50%{transform: rotate(0deg);}
+    75%{transform: rotate(10deg);}
+    100%{transform: rotate(0deg);}
+}

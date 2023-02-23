@@ -160,7 +160,7 @@ my sitewide classes
 }
 section{
     margin: 0 auto;
-    width: 50%;
+    width: fit-content;
     padding: 10px;
     background-color: var(--mintdark-color);
     border: var(--mintborder-border);
