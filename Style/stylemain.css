@@ -48,7 +48,7 @@ Nav bar styling
 }
 .dropdown-menu{position: relative;}
 .dropdown-label{color: var(--mintdark-color);}
-#dropdown-content{
+.dropdown-content{
     transform: translateX(-25px);
     margin-top: 10px;
     padding: 12px;
@@ -64,7 +64,7 @@ Nav bar styling
     flex-direction: column;
     transform: translateZ(1);
 }
-.dropdown-menu:hover #dropdown-content{
+.dropdown-menu:hover .dropdown-content{
     opacity: 1;
     visibility: visible;
 }

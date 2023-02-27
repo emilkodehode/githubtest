@@ -239,4 +239,12 @@ function loopingArrays(array){
     }
     return bang
 }
-console.log(loopingArrays(people)) 
+console.log(loopingArrays(people))
+
+
+//keep fluctuating/oscilating a number between a given range 
+function keepInRange(num, min, max){
+    
+}
+
+console.log(keepInRange(3638, 0, 255))

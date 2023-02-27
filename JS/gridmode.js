@@ -47,9 +47,10 @@ function colorCellInit(){
     cellContainer.replaceChildren();
     let collumnsWantedTL = ``
     let num = 0
-    let rndNum1 = Math.random()*10 + 4
-    let rndNum2 = Math.random()*10
-    let rndNum3 = Math.random()*10 + 2
+    let rndNum1 = Math.random()* 25
+    let rndNum2 = Math.random()* 25
+    let rndNum3 = Math.random()* 25
+
     let makeSolution = []
 
     for (let row = 0; row < +getRows.value; row++) {
@@ -69,10 +70,11 @@ function colorCellInit(){
     }
     for (const cell of cellContainer.children) {
         let rect = cell.getBoundingClientRect()
-        let left = rect.left / rndNum2
-        let top = rect.top / rndNum1
-        let right = rect.right /  rndNum3
-        cell.style.backgroundColor = `rgba(${left}, ${top}, ${right},1)`
+        let red = keepInRange(rect.left / rndNum1)
+        let green = keepInRange(rect.top / rndNum1)
+        let blue = keepInRange(rect.right / rndNum1)
+        keepInRange(red)
+        cell.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
         makeSolution.push(cell.id)
     }
     let number = cellContainer.childElementCount
@@ -81,7 +83,16 @@ function colorCellInit(){
     cellContainer.children[number - +getCollumns.value].className += "nomove"
     cellContainer.children[number - 1].className += "nomove"
     solution = makeSolution.toString()
-    scrambleColors()
+    //scrambleColors()
+}
+
+//i need to get numbers between 0 and 255 how do i do that?
+//if num is higer that 255 i want to reduce it i want the rest that is left is that what i get with modulo? if i have
+//osccilate is what im after. if a number reaches above 255 i dont want to cut it down i dont want to go from 285red to 30red
+//i want 255 minus 30 så it gradually goes between 0 and 255 depending on how many times it does
+//i want the remainder in range over 256 to be betwen 0 and 256 and then take 256 - remiander and this will give me smooth transition of colors
+function keepInRange(num){
+    
 }
 
 
@@ -101,7 +112,7 @@ function scrambleColors(){
 let firstClick = undefined
 let secondClick = undefined
 //if clicking in the container the cointainer gets gridded
-cellContainer.addEventListener("click",function(e){
+cellContainer.addEventListener("click",(e) =>{
     if(e.target.id !== "gridcontainer" && !e.target.classList.contains("nomove")){
         if(!firstClick){
             firstClick = e.target
