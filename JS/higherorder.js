@@ -69,7 +69,7 @@ const people = [
   
 const filteredPeople = people.filter(people => people.age >= 26 && people.age <= 28 && people.hobbies.length >= 3)
 
-console.log(filteredPeople);
+//console.log(filteredPeople);
 
 
 //this should log:
@@ -89,7 +89,7 @@ console.log(filteredPeople);
 const filteredPeople2 = people.filter(peopl => peopl.male === true && peopl.name.length === 6);
 
 
-console.log(filteredPeople2);
+//console.log(filteredPeople2);
 
 
 //this should log:
@@ -109,7 +109,7 @@ console.log(filteredPeople2);
 const filteredPeople3 = people.filter(people => people.hobbies.includes("gym"));
 
 
-console.log(filteredPeople3);
+//console.log(filteredPeople3);
 
 
 //this should log:
@@ -136,7 +136,7 @@ const fruits = [
 const mappedFruits = fruits.map(fruit => fruit.charAt(Math.floor(Math.random()*fruit.length)).toUpperCase());
 
 
-console.log(mappedFruits);
+//console.log(mappedFruits);
 
 
 // This should log something like this:
@@ -148,7 +148,7 @@ const numArray = [32, 11, 4, 67, 97, 61, 52, 12, 26, 8, 70, 23];
 const mappedArray = numArray.map(num => num >= 50 ? num*5 : num*10);
 
 
-console.log(mappedArray);
+//console.log(mappedArray);
 
 
 //fullfør .map method funksjonen:
@@ -240,7 +240,9 @@ const hobbies = [
 // }
 
 const filterdHobbies = hobbies.map(hobby => hobby.toLowerCase())
-console.log(filterdHobbies)
+
+//console.log(filterdHobbies)
+
 function removeDuplicate(data){
     noDuplicate = []
     data.forEach((element) => {
@@ -250,7 +252,9 @@ function removeDuplicate(data){
     });
     return noDuplicate
 }
-console.log(removeDuplicate(filterdHobbies))
+
+
+//console.log(removeDuplicate(filterdHobbies))
 
 function randomHobby(hobbiesArray, hobbyAmount){
   let rndHobbyArray = []
@@ -276,7 +280,10 @@ function realHumans(names, array){
     }
     return people
 }
-console.log(realHumans(names, filterdHobbies))
+
+//console.log(realHumans(names, filterdHobbies))
+
+
 // {
 //     name: "Scott"
 //     age: 31
@@ -295,13 +302,56 @@ function rowSumOddNumbers(n) {
 	return Math.pow(n,3)
 }
 
-console.log(rowSumOddNumbers(6))
-console.log(rowSumOddNumbers(9))
-console.log(rowSumOddNumbers(3))
+//console.log(rowSumOddNumbers(6))
+//console.log(rowSumOddNumbers(9))
+//console.log(rowSumOddNumbers(3))
 
 function descendingOrder(n){
   return n.toString().split("").sort(function(a,b){return b - a}).join("")
 }
 
-console.log(descendingOrder(347384))
-console.log(descendingOrder(123456789))
+//console.log(descendingOrder(347384))
+//console.log(descendingOrder(123456789))
+
+
+let my2Promise = new Promise(function(myResolve, myReject) {
+  setTimeout(function() { myResolve("what about reject"); }, 3000);
+});
+
+// console.log(my2Promise.then(function(value) {
+//   console.log(value);
+// }))
+
+// this is a new promise and the value returned is value next this holds
+// fetch('http://jsonplaceholder.typicode.com/posts/1')
+// .then(response => {console.log(response); return response.json()})
+// .then(json => console.log(json))
+
+// myPromise
+// .then(value => console.log(value))
+// .catch(error => Error(error))
+
+// const my3promise = myPromise
+// .then(value=>value)
+// .catch(error=>Error(error))
+
+
+/*so yeah promises are kinda weird and hard. but the important thing is remember to resolve it.
+if i ever make something that others need to wait for i must handle reject incase of failure so i can inform other of what has happend*/
+const myPromise = new Promise((resolve, reject)=>{
+  const dice = Math.random()*10
+  if(dice <=5){
+    resolve("this is me being a success")};
+  reject("rejected have some 'information'");
+});
+
+
+async function error(){
+  let value = await myPromise
+  .then(value => value)
+  .catch(error => Error(error))
+  console.log(value)
+}
+
+error()
+

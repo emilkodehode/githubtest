@@ -70,10 +70,9 @@ function colorCellInit(){
     }
     for (const cell of cellContainer.children) {
         let rect = cell.getBoundingClientRect()
-        let red = keepInRange(rect.left / rndNum1)
-        let green = keepInRange(rect.top / rndNum1)
-        let blue = keepInRange(rect.right / rndNum1)
-        keepInRange(red)
+        let red = rect.left / rndNum1
+        let green = rect.top / rndNum2
+        let blue = rect.right / rndNum3
         cell.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`
         makeSolution.push(cell.id)
     }
@@ -83,7 +82,7 @@ function colorCellInit(){
     cellContainer.children[number - +getCollumns.value].className += "nomove"
     cellContainer.children[number - 1].className += "nomove"
     solution = makeSolution.toString()
-    //scrambleColors()
+    scrambleColors()
 }
 
 //i need to get numbers between 0 and 255 how do i do that?
@@ -92,7 +91,7 @@ function colorCellInit(){
 //i want 255 minus 30 så it gradually goes between 0 and 255 depending on how many times it does
 //i want the remainder in range over 256 to be betwen 0 and 256 and then take 256 - remiander and this will give me smooth transition of colors
 function keepInRange(num){
-    
+    //after much trial and error i need to get back tot his cant find a proper way with result i want different apporach is probably needed
 }
 
 

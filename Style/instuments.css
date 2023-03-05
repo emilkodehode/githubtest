@@ -1,9 +1,15 @@
 .drumkit-section{
     display: grid;
-    grid-auto-flow: row dense;
+    grid-auto-flow: column dense;
     gap: 20px;
+    padding: 20px;
 }
 .instrument{
     cursor: pointer;
+    width: 5em;
+    height: 5em;
+    border: 5px solid red;
+    border-radius: 50%;
+    padding: 10px;
     width: fit-content;
 }

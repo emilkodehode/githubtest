@@ -15,9 +15,11 @@ const sounds = ["clap.wav","hihat.wav","kick.wav","openhat.wav","ride.wav","tink
 function instrumentCreator(targetEl, source, sourceFolder){
     source.forEach(e => {
         let instrument =  document.createElement("div")
+        let text = document.createElement("p")
         instrument.className = "instrument"
-        instrument.textContent = e.split('').splice(0, (e.length - 4)).join('')
+        text.textContent = e.split('').splice(0, (e.length - 4)).join('')
         addingAudioFunctionality(instrument, e, sourceFolder)
+        instrument.append(text)
         targetEl.append(instrument)
     });
 }
@@ -38,11 +40,13 @@ drumkitEL.addEventListener("click", (e)=>{
 
 
 let recording = []
+//this takes i and makes it so all timeouts fires at the same time but with increased delay based on time * i so first is 500*0=0 then 500*1=500 then 500*2=1000
 function playBack(recording){
-    recording.forEach(element => {
-        element.lastElementChild.play()
-    });
+    for (let i = 0; i < recording.length; i++) {
+        setTimeout(function(){recording[i].querySelector("audio").play()}, 500 * i)
+    }
 }
+
 
 playRecordingBtn.addEventListener("click", ()=>{
     playBack(recording)
